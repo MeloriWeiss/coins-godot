@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c66n4mwqk1g21"]
+
+[ext_resource type="Script" uid="uid://0nw3kkgk7u6u" path="res://assets/main/scripts/main.gd" id="1_k5mrd"]
+[ext_resource type="Texture2D" uid="uid://d37y3q35bpmva" path="res://assets/main/images/background.jpg" id="2_j84mu"]
+[ext_resource type="PackedScene" uid="uid://d3t7fwn7thm7y" path="res://assets/coin/coin.tscn" id="2_yti63"]
+[ext_resource type="PackedScene" uid="uid://crltujlo5wlnr" path="res://assets/player/player.tscn" id="3_yti63"]
+[ext_resource type="PackedScene" uid="uid://boankoecojpyc" path="res://assets/hud/hud.tscn" id="5_yti63"]
+[ext_resource type="AudioStream" uid="uid://etrwry834gvt" path="res://assets/audio/Coin.wav" id="6_3yvm8"]
+[ext_resource type="AudioStream" uid="uid://cwjsubhctct27" path="res://assets/audio/Level.wav" id="7_6sv45"]
+[ext_resource type="AudioStream" uid="uid://fetxniuf05pd" path="res://assets/audio/EndSound.wav" id="8_by4fb"]
+
+[node name="Node2D" type="Node2D" unique_id=1907399886]
+script = ExtResource("1_k5mrd")
+coin_scene = ExtResource("2_yti63")
+
+[node name="Background" type="TextureRect" parent="." unique_id=651457829]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 909.0
+offset_bottom = 828.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j84mu")
+stretch_mode = 1
+
+[node name="Player" parent="." unique_id=980400849 instance=ExtResource("3_yti63")]
+
+[node name="GameTimer" type="Timer" parent="." unique_id=921397283]
+
+[node name="HUD" parent="." unique_id=2082438443 instance=ExtResource("5_yti63")]
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="." unique_id=1380172877]
+stream = ExtResource("6_3yvm8")
+
+[node name="LevelSound" type="AudioStreamPlayer2D" parent="." unique_id=874590784]
+stream = ExtResource("7_6sv45")
+
+[node name="EndSound" type="AudioStreamPlayer2D" parent="." unique_id=1382403117]
+stream = ExtResource("8_by4fb")
+
+[connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
+[connection signal="pickup" from="Player" to="." method="_on_player_pickup"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
