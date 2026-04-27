@@ -3,7 +3,7 @@ extends Area2D
 var screensize = Vector2.ZERO
 
 func _ready() -> void:
-	$Timer.start(randf_range(1, 3))
+	pass
 
 
 func _process(delta: float) -> void:
@@ -18,9 +18,8 @@ func pickup():
 	queue_free()
 
 
-func _on_timer_timeout() -> void:
-	$AnimatedSprite2D.frame = 0
-	$AnimatedSprite2D.play()
+func _on_lifetime_timeout() -> void:
+	queue_free()
 
 
 func _on_area_entered(area: Area2D) -> void:

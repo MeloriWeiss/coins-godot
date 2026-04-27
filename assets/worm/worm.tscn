@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://2gp17js33jn8"]
+
+[ext_resource type="Texture2D" uid="uid://ctackdhymh0i4" path="res://assets/worm/animations/idle/frame-1.png" id="1_8q6t1"]
+[ext_resource type="Script" uid="uid://caqf320kc4u2j" path="res://assets/worm/scripts/worm.gd" id="1_ewijd"]
+[ext_resource type="Texture2D" uid="uid://cdwy8g6scr0gi" path="res://assets/worm/animations/idle/frame-2.png" id="2_ewijd"]
+[ext_resource type="Texture2D" uid="uid://b18auuw5u552o" path="res://assets/worm/animations/idle/frame-3.png" id="3_akh13"]
+[ext_resource type="Texture2D" uid="uid://byjef0s3fmhbc" path="res://assets/worm/animations/idle/frame-4.png" id="4_ydm6o"]
+[ext_resource type="Texture2D" uid="uid://4onchs0022o8" path="res://assets/worm/animations/idle/frame-5.png" id="5_xjiea"]
+[ext_resource type="Texture2D" uid="uid://c2bxkbe5abyfh" path="res://assets/worm/animations/idle/frame-6.png" id="6_otaiv"]
+[ext_resource type="Texture2D" uid="uid://yyudp5vl28hd" path="res://assets/worm/animations/idle/frame-7.png" id="7_r8j5e"]
+[ext_resource type="Texture2D" uid="uid://dixpefo7pno2a" path="res://assets/worm/animations/idle/frame-8.png" id="8_wajel"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o5d7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8q6t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ewijd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_akh13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ydm6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xjiea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_otaiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r8j5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wajel")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px47c"]
+size = Vector2(342, 457)
+
+[node name="Area2D" type="Area2D" unique_id=707055905 groups=["Obstacles"]]
+scale = Vector2(0.17, 0.17)
+script = ExtResource("1_ewijd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=4988422]
+sprite_frames = SubResource("SpriteFrames_4o5d7")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=917380561]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_px47c")
+
+[node name="Timer" type="Timer" parent="." unique_id=889511238]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

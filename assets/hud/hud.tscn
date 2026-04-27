@@ -50,17 +50,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
+[node name="Time" type="Label" parent="MarginContainer" unique_id=1540221092]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0ahed")
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="Score" type="Label" parent="MarginContainer" unique_id=1666417600]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_0ahed")
-vertical_alignment = 1
-
-[node name="Time" type="Label" parent="MarginContainer" unique_id=1540221092]
-layout_mode = 2
-text = "60"
-label_settings = SubResource("LabelSettings_0ahed")
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=671983358]

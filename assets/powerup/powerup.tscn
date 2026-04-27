@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://d0tus6c7a62ga"]
+
+[ext_resource type="Script" uid="uid://dufnntdvxlg43" path="res://assets/powerup/scripts/powerup.gd" id="1_qf0kn"]
+[ext_resource type="Texture2D" uid="uid://cw7wmq4b0uhnr" path="res://assets/powerup/animations/idle/star coin rotate 1.png" id="2_qf0kn"]
+[ext_resource type="Texture2D" uid="uid://dq7re1elno08x" path="res://assets/powerup/animations/idle/star coin rotate 2.png" id="3_07pbf"]
+[ext_resource type="Texture2D" uid="uid://baxcs3wad32if" path="res://assets/powerup/animations/idle/star coin rotate 3.png" id="4_gcg75"]
+[ext_resource type="Texture2D" uid="uid://d2msu5j7536he" path="res://assets/powerup/animations/idle/star coin rotate 4.png" id="5_eljpb"]
+[ext_resource type="Texture2D" uid="uid://drvrsxu5w2tnm" path="res://assets/powerup/animations/idle/star coin rotate 5.png" id="6_wgdif"]
+[ext_resource type="Texture2D" uid="uid://d2sod5jujgita" path="res://assets/powerup/animations/idle/star coin rotate 6.png" id="7_ya1kr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_occ72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qf0kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_07pbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gcg75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eljpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wgdif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ya1kr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_876p1"]
+radius = 15.0
+
+[node name="Powerup" type="Area2D" unique_id=1733831497 groups=["Powerups"]]
+script = ExtResource("1_qf0kn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1853904868]
+scale = Vector2(0.013, 0.013)
+sprite_frames = SubResource("SpriteFrames_occ72")
+animation = &"idle"
+autoplay = "idle"
+frame = 4
+frame_progress = 0.50731945
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294103043]
+shape = SubResource("CircleShape2D_876p1")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=122235837]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
