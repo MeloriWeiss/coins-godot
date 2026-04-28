@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cnku3u8p4465d"]
+
+[ext_resource type="Script" uid="uid://deddw84ku8ine" path="res://assets/scenes/mobile_joystick/scripts/mobile_joystick.gd" id="1_15nqw"]
+[ext_resource type="Texture2D" uid="uid://cpylkwsjj6slg" path="res://assets/scenes/mobile_joystick/images/Joystick.png" id="2_2igdw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_da5u6"]
+radius = 130.0
+
+[node name="Mobile_Joystick" type="CanvasLayer" unique_id=214314285]
+script = ExtResource("1_15nqw")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=173483722]
+modulate = Color(1, 1, 1, 0.67058825)
+position = Vector2(170, 547)
+scale = Vector2(0.5351562, 0.5351562)
+texture_normal = ExtResource("2_2igdw")
+shape = SubResource("CircleShape2D_da5u6")
